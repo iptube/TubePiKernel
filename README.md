@@ -33,7 +33,7 @@ make mrproper
 
 6. Copy kernel config from this repo
 
-cp ../config .config
+cp ../pi-kernel-config .config
 
 7. Compile kernel  
 make ARCH=arm CROSS_COMPILE=${CCPREFIX} oldconfig  
