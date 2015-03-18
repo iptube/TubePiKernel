@@ -8,34 +8,42 @@ It is recommended to cross-compile a new kernel and the modules on another Linux
 
 ### Cross-compile kernel on Ubuntu
 1. Install compiler and tools
+
 ⋅⋅⋅ apt-get install gcc-arm-linux-gnueabi make ncurses-dev
 
-2. Create some handy directories 
+2. Create some handy directories
+
 ⋅⋅⋅mkdir kernel
 ⋅⋅⋅mkdir modules
 
 3. Get kernel src (Make sure you have enough memory or swap space)
+
 ⋅⋅⋅git clone https://github.com/raspberrypi/linux.git
 
 4. Set env variables
+
 ⋅⋅⋅export KERNEL_SRC=/home/palmarti/development/raspberry/linux/
 ⋅⋅⋅export CCPREFIX=/usr/bin/arm-linux-gnueabi-
 ⋅⋅⋅export MODULES_TEMP=/home/palmarti/development/raspberry/modules/
 
 5. Prepare kernel compilation
+
 ⋅⋅⋅cd linux
 ⋅⋅⋅make mrproper
 
 6. Copy kernel config from this repo
+
 ⋅⋅⋅cp ../config .config
 
 7. Compile kernel
+
 ⋅⋅⋅make ARCH=arm CROSS_COMPILE=${CCPREFIX} oldconfig
 ⋅⋅⋅make ARCH=arm CROSS_COMPILE=${CCPREFIX} -j4
 ⋅⋅⋅make ARCH=arm CROSS_COMPILE=${CCPREFIX} -j4 modules
 ⋅⋅⋅make ARCH=arm CROSS_COMPILE=${CCPREFIX} INSTALL_MOD_PATH=${MODULES_TEMP} modules_install
 
 8. Make a nice package
+
 ⋅⋅⋅cd ..
 ⋅⋅⋅cd tools/mkimage
 ⋅⋅⋅./imagetool-uncompressed.py ${KERNEL_SRC}/arch/arm/boot/zImage
