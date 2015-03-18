@@ -9,27 +9,27 @@ It is recommended to cross-compile a new kernel and the modules on another Linux
 ### Cross-compile kernel on Ubuntu
 1. Install compiler and tools
 
-⋅⋅⋅ apt-get install gcc-arm-linux-gnueabi make ncurses-dev
+apt-get install gcc-arm-linux-gnueabi make ncurses-dev
 
 2. Create some handy directories
 
-⋅⋅⋅mkdir kernel
-⋅⋅⋅mkdir modules
+mkdir kernel  
+mkdir modules
 
 3. Get kernel src (Make sure you have enough memory or swap space)
 
-⋅⋅⋅git clone https://github.com/raspberrypi/linux.git
+git clone https://github.com/raspberrypi/linux.git
 
 4. Set env variables
 
-⋅⋅⋅export KERNEL_SRC=/home/palmarti/development/raspberry/linux/
-⋅⋅⋅export CCPREFIX=/usr/bin/arm-linux-gnueabi-
-⋅⋅⋅export MODULES_TEMP=/home/palmarti/development/raspberry/modules/
+export KERNEL_SRC=/home/palmarti/development/raspberry/linux/  
+export CCPREFIX=/usr/bin/arm-linux-gnueabi-  
+export MODULES_TEMP=/home/palmarti/development/raspberry/modules/  
 
 5. Prepare kernel compilation
 
-⋅⋅⋅cd linux
-⋅⋅⋅make mrproper
+cd linux
+⋅make mrproper
 
 6. Copy kernel config from this repo
 
