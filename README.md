@@ -44,3 +44,12 @@ cp tools/mkimage/kernel.img kernel/kernel_cross.img
 tar zczf kernel_pi.tar.gz modules/lib/ kernel/
 
 9. Transfer the kernel_pi.tar.gz to the pi and ubdate /usr/lib and what kernel to boot
+
+### Cross compile module
+
+1. Set env variables
+CCPREFIX=/usr/bin/arm-linux-gnueabi-
+
+2. Call make
+make ARCH=arm CROSS_COMPILE=${CCPREFIX} KERNEL_HEADERS=/home/palmarti/development/raspberry/modules/lib/modules/3.18.9+/build
+
